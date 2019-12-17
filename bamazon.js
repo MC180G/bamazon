@@ -49,14 +49,23 @@ function userQuery() {
     for (let i = 0; i < res.length;i++)
     console.log(res[i].item_id + " | " + res[i].product_name + " | $" + res[i].price);
         });
-});
+})};
 
-//     {
-// name: "quantity",
-// type:"number",
-// message:"And how many can I put you down for?",
-// itemQuantity();
-//     },
+itemQuantity()    {
+  inquire.prompt(
+    {
+      name: "quantity",
+      type:"number",
+      message:"And how many can I put you down for? Please select from 1 to " + res[i].quantity + ".",
+    })
+      .then(function (howMany){
+        if (quantity < res[i].quantity) throw err;
+        console.log("I just don't have enough right now. Perhaps you can buy " + res[i].quantity -1 + "?");
+        else ()
+      })
+       
+         
+    };
 //     {
 // name: "continue",
 // type: "list",
