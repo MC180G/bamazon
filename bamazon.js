@@ -18,9 +18,9 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
-  queryAllProducts();
-});
+  console.log("connected as id " + connection.threadId)
+  });
+queryAllProducts();
 
 function queryAllProducts() {
   connection.query("SELECT * FROM products", function (err, res) {
@@ -76,11 +76,11 @@ function checkOut() {
       type: "list",
       message: "Would you like to checkout?",
       choices: ["Yes", "No", "Cancel"],
-      userTotal = price * userQuanity
     })
-
-  // Take User Quanity and multiply by Price for the Total.
     
+    // Take User Quanity and multiply by Price for the Total.
+    
+    userTotal = price * userQuanity
 
         // Extra Credit: Add 5% sales tax.
     
@@ -90,5 +90,5 @@ function checkOut() {
   }
   
   // logs the actual query being run
-  console.log(query.sql);
+  // console.log(query.sql);
   connection.end();
