@@ -32,6 +32,7 @@ function queryAllProducts() {
     }
     console.log("-----------------------------------");
   });
+  userQuery();
 }
 
 
@@ -50,6 +51,7 @@ function userQuery() {
           console.log(res[i].item_id + " | " + res[i].product_name + " | $" + res[i].price);
       });
     })
+    itemQuantity();
 };
 
 function itemQuantity() {
@@ -64,9 +66,9 @@ function itemQuantity() {
       console.log("I just don't have enough right now. Perhaps you can buy " + res[i].quantity - 1 + "?");
 
     })
-
-
+checkOut();
 };
+
 function checkOut() {
   inquire.prompt(
     {
@@ -74,21 +76,19 @@ function checkOut() {
       type: "list",
       message: "Would you like to checkout?",
       choices: ["Yes", "No", "Cancel"],
+      userTotal = price * userQuanity
     })
 
-
-
-
   // Take User Quanity and multiply by Price for the Total.
-    function checkOut() {
-      userTotal = price * userQuanity;
+    
 
         // Extra Credit: Add 5% sales tax.
-    }
+    
 
   console.log("It seems you would like to purchase " + userQuantity + " " + product_name + "'s at $" + price + ", which would bring your total to $" 
   + userTotal + ". What card would you like to use?");
-
+  }
+  
   // logs the actual query being run
   console.log(query.sql);
   connection.end();
