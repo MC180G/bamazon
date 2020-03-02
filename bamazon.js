@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const inquire = require('inquirer')
 const axios = require("axios")
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
 
   // Your port; if not 3306
@@ -19,8 +19,8 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId)
+  queryAllProducts();
   });
-queryAllProducts();
 
 function queryAllProducts() {
   connection.query("SELECT * FROM products", function (err, res) {
@@ -31,8 +31,8 @@ function queryAllProducts() {
       console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].price);
     }
     console.log("-----------------------------------");
+    userQuery();
   });
-  userQuery();
 }
 
 
@@ -90,5 +90,5 @@ function checkOut() {
   }
   
   // logs the actual query being run
-  // console.log(query.sql);
+  console.log('query.sql');
   connection.end();
